@@ -2,6 +2,16 @@
 
 #include <iostream>
 
+Processor::Execution::Execution() {
+    uint32_t pc;
+    int source1;
+    int source2;
+    int immediate;
+    uint32_t destination;
+};
+
+Processor::Execution::~Execution(){};
+
 int Processor::Execution::alu(int a, int b, opcode instruction) {
     int result;
     switch (instruction) {
