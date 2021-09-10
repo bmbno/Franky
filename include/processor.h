@@ -1,23 +1,55 @@
 
 
-class Processor {        
+class Processor
+{
     int *_memory;
     int *_register;
 
-    Processor(int memory_size=4000, int num_registers=3);
+    Processor(int memory_size = 4000, int num_registers = 3);
     ~Processor();
 
-    class Fetch{};
+    class Fetch
+    {
+    };
 
-    class Decode{};
+    class Decode
+    {
+    };
 
-    class Execution{};
+    class Execution
+    {
+        enum opcode
+        {
+            ADD,
+            SUB,
+            MULT,
+            DIV,
+            JMP,
+            JMPE,
+            JMPNE,
+            JMPG,
+            JMPGE,
+            JMPL,
+            JMPLE,
+            SHIFTL,
+            SHIFTR,
+            LD,
+            ST,
+            MOV,
+            AND,
+            OR,
+            NOT,
+            XOR
+        };
 
-    class Memory{};
+        int alu(int a, int b, opcode instruction){};
+    };
 
-    class WriteBack{};
-    
-    
+    class Memory
+    {
+    };
 
+    class WriteBack
+    {
+    };
 };
-    
