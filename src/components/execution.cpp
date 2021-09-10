@@ -70,6 +70,7 @@ int Processor::Execution::alu(int a, int b, opcode instruction) {
             break;
         default:
             std::cout << "Error \n";
+            result = NULL;
             break;
     }
 
@@ -103,4 +104,6 @@ bool Processor::Execution::branch(int a, opcode instruction) {
         default:
             result = false;
             break;
-    };
+    }
+    return result;
+};
