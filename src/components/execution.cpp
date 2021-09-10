@@ -75,3 +75,32 @@ int Processor::Execution::alu(int a, int b, opcode instruction) {
 
     return result;
 };
+
+bool Processor::Execution::branch(int a, opcode instruction) {
+    bool result;
+    switch (instruction) {
+        case JMP:
+            result = true;
+            break;
+        case JMPE:
+            result = a == 0;
+            break;
+        case JMPNE:
+            result = a != 0;
+            break;
+        case JMPG:
+            result = a > 0;
+            break;
+        case JMPGE:
+            result = a >= 0;
+            break;
+        case JMPL:
+            result = a < 0;
+            break;
+        case JMPLE:
+            result = a <= 0;
+            break;
+        default:
+            result = false;
+            break;
+    };

@@ -35,7 +35,8 @@ class Processor {
             NOP
         };
 
-        int alu(int a, int b, opcode instruction){};
+        int alu(int a, int b, opcode instruction);
+        bool branch(int a, opcode instruction);
     };
 
     class Memory {};
