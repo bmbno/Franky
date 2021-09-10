@@ -1,25 +1,17 @@
 
-
-class Processor
-{
+class Processor {
     int *_memory;
     int *_register;
 
     Processor(int memory_size = 4000, int num_registers = 3);
     ~Processor();
 
-    class Fetch
-    {
-    };
+    class Fetch {};
 
-    class Decode
-    {
-    };
+    class Decode {};
 
-    class Execution
-    {
-        enum opcode
-        {
+    class Execution {
+        enum opcode {
             ADD,
             SUB,
             MULT,
@@ -39,17 +31,14 @@ class Processor
             AND,
             OR,
             NOT,
-            XOR
+            XOR,
+            NOP
         };
 
         int alu(int a, int b, opcode instruction){};
     };
 
-    class Memory
-    {
-    };
+    class Memory {};
 
-    class WriteBack
-    {
-    };
+    class WriteBack {};
 };
