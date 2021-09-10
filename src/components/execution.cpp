@@ -54,10 +54,10 @@ int Processor::Execution::alu(int a, int b, opcode instruction) {
             result = a + b;
             break;
         case AND:
-            result = a && b;
+            result = a & b;
             break;
         case OR:
-            result = a || b;
+            result = a | b;
             break;
         case NOT:
             result = ~a;
