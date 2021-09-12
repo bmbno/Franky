@@ -12,7 +12,7 @@ Processor::Execution::Execution() {
 
 Processor::Execution::~Execution(){};
 
-int Processor::Execution::alu(int a, int b, opcode instruction) {
+int Processor::Execution::alu(int a, int b, opcode_t instruction) {
     int result;
     switch (instruction) {
         case ADD:
@@ -87,7 +87,7 @@ int Processor::Execution::alu(int a, int b, opcode instruction) {
     return result;
 };
 
-bool Processor::Execution::branch(int a, opcode instruction) {
+bool Processor::Execution::branch(int a, opcode_t instruction) {
     bool result;
     switch (instruction) {
         case JMP:

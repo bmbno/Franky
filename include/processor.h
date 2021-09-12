@@ -1,31 +1,11 @@
+#include <structure.h>
+
 #include <cstdint>
+
 #define memory_latency 100
 
 class Processor {
     int *gp_register;
-    enum opcode {
-        ADD,
-        SUB,
-        MULT,
-        DIV,
-        JMP,
-        JMPE,
-        JMPNE,
-        JMPG,
-        JMPGE,
-        JMPL,
-        JMPLE,
-        SHIFTL,
-        SHIFTR,
-        LD,
-        ST,
-        MOV,
-        AND,
-        OR,
-        NOT,
-        XOR,
-        NOP
-    };
 
     Processor(int num_registers = 3);
     ~Processor();
@@ -37,7 +17,7 @@ class Processor {
         Fetch();
         ~Fetch();
         void step();
-        Processor::opcode fetch_instruction(int pc);
+        opcode_t fetch_instruction(int pc);
     };
 
     class Decode {
@@ -59,8 +39,8 @@ class Processor {
         Execution();
         ~Execution();
         void step();
-        int alu(int a, int b, Processor::opcode instruction);
-        bool branch(int a, Processor::opcode instruction);
+        int alu(int a, int b, opcode_t instruction);
+        bool branch(int a, opcode_t instruction);
     };
 
     class Memory {
@@ -71,7 +51,7 @@ class Processor {
         uint32_t memory_input;
         uint32_t destination;
 
-        Memory(int memory_size = 4000);
+        Memory(uint32_t memory_size = 0X4000);
         ~Memory();
         void step();
         uint32_t load(uint32_t address);

@@ -1,6 +1,6 @@
 #include <processor.h>
 
-Processor::Memory::Memory(int memory_size = 4000) {
+Processor::Memory::Memory(uint32_t memory_size = 0X4000) {
     _memory = new int[memory_size];
     uint32_t pc;
     bool branch_taken;
