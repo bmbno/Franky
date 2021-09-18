@@ -16,8 +16,10 @@ class Processor {
 
         Fetch();
         ~Fetch();
-        void step();
-        opcode_t fetch_instruction(int pc);
+        void step();  // void because manipulating pointers, maybe return stall
+        opcode_t fetch_instruction(uint32_t pc);
+        bool branch_check(bool stall);
+        uint32_t adder(uint32_t pc);
     };
 
     class Decode {
@@ -27,6 +29,9 @@ class Processor {
         Decode();
         ~Decode();
         void step();
+        // write back
+        // register use
+        // stalling
     };
 
     class Execution {

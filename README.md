@@ -1,3 +1,3 @@
 # RISC-V
 
-A project to simulate a RISC-V processor using MIPS architecture.
+A project to simulate a processor using MIPS architecture and RISC instruction set

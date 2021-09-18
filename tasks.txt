@@ -1,0 +1,68 @@
+Order of implementation:
+    Fetch
+    decode
+    execute
+        alu
+    memory
+    write back
+
+
+Every stage have an input of stall and output of stall
+output of stall send back to input of previous stage
+MUX: if C then A else B (C ? A : B)
+ADDER: pc + 4
+pc value is tracked by registers
+
+Hazards:
+    Data: read after write, write after write, write after read
+        only worried about read after write (RAW), prevented with stalling implementation
+    Structural - don't have multiple EXE so not worried
+    Branching: prevented with stalling implementation
+    Memory - not worried about for this scope
+
+processor:
+    while loop
+    break condition is opcode EOP
+
+fetch:
+    gets an input of next pc, stall
+    methods:
+        check_branch:
+            takes input of bool stall
+            branch_stall = false; by default
+            if stall == true:
+                do nothing
+                return branch_stall
+            if stall == false:
+                checks all other stages for branch
+                return branch_stall
+        fetch_instruction:
+            params: pc, 
+            fetch instruction with current pc
+            condition on whether to use adder function (implement after branching is implemented)
+                if branch returns true: use the pc it returns
+                else: adder()
+            return opcode
+        adder:
+            params: pc
+            return pc + 4
+
+    returns pc, ir(instruction)
+
+decode :
+    gets input of pc, ir, stall
+    returns pc, values at src1(A), value at src2(B), the immediate(in the instruction itself), ir
+
+ALU:
+    operation takes 1 clock cycle
+    not waiting an additional clock cycle, but allows each step to continuously progress
+
+MEM:
+    operation takes 10 clock cycles
+    waiting and additional 9 clock cycles
+
+
+branch logic:
+    have NOP on IF until branch passes through EXE
+    branch returns from the memory condition for deciding which branch for IF to use
+
