@@ -44,3 +44,11 @@ typedef struct {
         label;  // for conditional branches, label of the target
                 // instruction - used only for parsing/debugging purposes
 } instruction_t;
+
+typedef struct {
+    int pc;         // program counter
+    unsigned src1;  // first source register in the assembly instruction (for
+                    // SW, register to be written to memory)
+    unsigned src2;  // second source register in the assembly instruction
+    unsigned immediate;  // immediate field
+} decode_registers_t;

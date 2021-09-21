@@ -13,22 +13,24 @@ class Processor {
 
     class Fetch {
         uint32_t pc;
-
-        Fetch();
+        instruction_t *instr_memory;
+        Fetch(uint32_t memory_size = 50);
         ~Fetch();
         void step();  // void because manipulating pointers, maybe return stall
-        opcode_t fetch_instruction(uint32_t pc);
-        bool branch_check(bool stall);
+        opcode_t fetch_instruction(uint32_t);
+        bool check_branch(bool stall);
         uint32_t adder(uint32_t pc);
     };
 
     class Decode {
         uint32_t pc;
         // instruction class
+        uint32_t registers[];
 
         Decode();
         ~Decode();
         void step();
+        void register_fetch(instruction_t ir, int &A, int &B, int &imm);
         // write back
         // register use
         // stalling
