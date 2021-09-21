@@ -10,8 +10,13 @@ Processor::Fetch::~Fetch() {
     delete instr_memory;
 };
 
-void Processor::Fetch::step(){
-
+void Processor::Fetch::step() {
+    bool &stall_condition = *stall;
+    bool stall_condition = check_branch(stall_condition);
+    if (!stall_condition) {
+        opcode_t ir = fetch_instruction(pc);
+        uint32_t npc = adder(pc);
+    }
 };
 
 opcode_t Processor::Fetch::fetch_instruction(uint32_t) {

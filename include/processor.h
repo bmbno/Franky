@@ -6,11 +6,14 @@
 
 class Processor {
     int *gp_register;
+    uint32_t *clock_cycle;
+    bool *stall;
 
     Processor(int num_registers = 3);
     ~Processor();
     void step();
 
+   public:
     class Fetch {
         uint32_t pc;
         instruction_t *instr_memory;
